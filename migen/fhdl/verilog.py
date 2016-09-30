@@ -116,9 +116,7 @@ def _printexpr(ns, node):
 
 
 def _printnode(ns, at, level, node):
-    if node is None:
-        return ""
-    elif isinstance(node, _Assign):
+    if isinstance(node, _Assign):
         if at == _AT_BLOCKING:
             assignment = " = "
         elif at == _AT_NONBLOCKING:
@@ -298,6 +296,11 @@ def convert(f, ios=None, name="top",
     fs, lowered_specials = lower_specials(special_overrides, f.specials)
     f += lower_basics(fs)
 
+    for io in sorted(ios, key=lambda x: x.duid):
+        if io.name_override is None:
+            io_name = io.backtrace[-1][0]
+            if io_name:
+                io.name_override = io_name
     ns = build_namespace(list_signals(f) \
         | list_special_ios(f, True, True, True) \
         | ios, _reserved_keywords)

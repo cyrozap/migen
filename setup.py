@@ -11,12 +11,12 @@ if sys.version_info[:3] < (3, 3):
 
 setup(
     name="migen",
-    version="0.2",
+    version="0.4",
     description="Python toolbox for building complex digital hardware",
     long_description=open("README.md").read(),
     author="Sebastien Bourdeauducq",
     author_email="sb@m-labs.hk",
-    url="http://m-labs.hk",
+    url="https://m-labs.hk",
     download_url="https://github.com/m-labs/migen",
     packages=find_packages(),
     test_suite="migen.test",
