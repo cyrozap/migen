@@ -5,6 +5,12 @@ from migen.build.xilinx import XilinxPlatform
 _io = [
     ("clk25", 0, Pins("Y13"), IOStandard("LVCMOS33")),
 
+    ("serial", 0,
+        Subsignal("tx", Pins("AB19"), IOStandard("LVCMOS33"),
+            Misc("SLEW=FAST")),
+        Subsignal("rx", Pins("AA21"), IOStandard("LVCMOS33"),
+            Misc("SLEW=FAST"))),
+
     ("spiflash", 0,
         Subsignal("cs_n", Pins("T5")),
         Subsignal("clk", Pins("Y21")),
@@ -78,6 +84,35 @@ _io = [
         Subsignal("crs", Pins("W4")),
         IOStandard("LVCMOS33")),
 
+    ("i2c", 0,
+        Subsignal("scl", Pins("E8")),
+        Subsignal("sda", Pins("D9")),
+        IOStandard("LVCMOS33")),
+
+    ("dvi", 0,
+        Subsignal("d", Pins("D17 A14 A15 A16 A17 A18 D14 B14 B16 B18 E16 D15")),
+        Subsignal("de", Pins("F14")),
+        Subsignal("clk", Pins("E14")),
+        Subsignal("clk_n", Pins("F15")),
+        Subsignal("vsync", Pins("C16")),
+        Subsignal("hsync", Pins("F12")),
+        Subsignal("scl", Pins("C14")),
+        Subsignal("sda", Pins("C17")),
+        Subsignal("int", Pins("D13")),
+        Subsignal("reset_n", Pins("C15")),
+        IOStandard("LVCMOS33")),
+
+    ("hdmi", 0,
+        Subsignal("d", Pins("T18 U16 V17 V19 V18 W17 Y17 Y15 Y18 Y19 AB21 T17")),
+        Subsignal("de", Pins("AB16")),
+        Subsignal("clk", Pins("T15")),
+        Subsignal("vsync", Pins("T16")),
+        Subsignal("hsync", Pins("AB15")),
+        Subsignal("scl", Pins("AA21")),
+        Subsignal("sda", Pins("AB19")),
+        Subsignal("int", Pins("AB18")),
+        Subsignal("reset_n", Pins("W18")),
+        IOStandard("LVCMOS33")),
 ]
 
 
